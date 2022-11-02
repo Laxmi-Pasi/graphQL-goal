@@ -8,10 +8,20 @@ module Types
     # They will be entry points for queries on your schema.
 
     # TODO: remove me
-    field :test_field, String, null: false,
-      description: "An example field added by the generator"
-    def test_field
-      "Hello World!"
+    field :articles, [Types::ArticleType], null: false, description: 'Return a list of articles.'
+
+    # /articles
+    def articles
+      Article.all
+    end
+
+    # /article/:id
+    field :article, ArticleType, null: true do
+      argument :id, ID, required: true
+    end
+
+    def article(id:)
+      Article.find_by(id: id)
     end
   end
 end

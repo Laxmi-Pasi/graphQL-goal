@@ -53,7 +53,6 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   # Gemfile
   gem 'graphql'
-  gem 'graphql-playground'
 end
 
 group :development do
@@ -74,3 +73,5 @@ group :test do
   gem "webdrivers"
 end
 gem "graphiql-rails", group: :development
+
+gem "pry", "~> 0.14.1"
