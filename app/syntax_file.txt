@@ -1,0 +1,47 @@
+# mutation{
+  
+#   createUser(input: {firstName: "john", lastName: "king", email: "john@gmail.com", password: "John@123"}){
+#     user{
+#       firstName
+#       lastName
+#       email
+#       password
+#     }
+#     message
+#     errors
+#   }
+  
+  
+#   createArticle(input: {
+#     title: "sports",
+#     description: "play major role in life",
+#     userId : 1
+#   }){
+#     errors
+#     message
+#   }
+# }
+
+{
+  # articles{
+  #   title
+  #   description
+  #   user{
+  #     id
+  #     firstName
+  #     lastName
+  #   }
+  # }
+  
+  # users{
+  #   firstName
+  #   lastName
+  #   email
+  #   password
+  #   articles{
+  #     id
+  #     title
+  #     description
+  #   }
+  # }
+}

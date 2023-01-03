@@ -4,13 +4,16 @@ module Types
     include GraphQL::Types::Relay::HasNodeField
     include GraphQL::Types::Relay::HasNodesField
 
-    # Add root-level fields here.
-    # They will be entry points for queries on your schema.
+    # /users
+    field :users, [Types::UserType], null: false, description: 'Return a list of users.'
 
-    # TODO: remove me
-    field :articles, [Types::ArticleType], null: false, description: 'Return a list of articles.'
+    def users
+      User.all
+    end
 
     # /articles
+    field :articles, [Types::ArticleType], null: false, description: 'Return a list of articles.'
+
     def articles
       Article.all
     end
@@ -23,5 +26,7 @@ module Types
     def article(id:)
       Article.find_by(id: id)
     end
+
+    field :user_with_articles, Types::UserType, null: false, description: 'Return a list of users.'
   end
 end
